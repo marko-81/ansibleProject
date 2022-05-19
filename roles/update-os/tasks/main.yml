@@ -1,0 +1,10 @@
+---
+# tasks file for update-os
+
+- name: Install systems update for Centos/RHEL
+  import_tasks: centos.yml
+  when: ansible_facts['os_family']|lower == 'redhat'
+
+- name: Install systems update for Debian/Ubuntu
+  import_tasks: debian.yml
+  when: ansible_facts['os_family']|lower == 'debian'

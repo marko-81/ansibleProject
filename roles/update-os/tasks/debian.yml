@@ -1,0 +1,15 @@
+---
+- name: Update apt-cache and do dist upgrade
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+    upgrade: dist
+
+- name: Check if reboot required
+  stat:
+    path: /var/run/reboot-required
+  register: reboot_required
+  changed_when: reboot_required.stat.exists == true
+  notify:
+    - reboot
+

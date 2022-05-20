@@ -9,3 +9,22 @@
     post_reboot_delay: 30
     test_command: whoami
 
+- name: log to file
+  delegate_to: localhost
+  become: false
+  template:
+    src: "../templates/logfile.j2"
+    dest: "home/ansible/ansibleLogs/{{ ansible_hostname }}.{{ ansible_date_time.year }}{{ ansible_date_time.month }}{{ ansible_date_time.day }}"
+    mode: 0640
+  listen:
+  - "update_logs"
+
+- name: yum log to file
+  delegate_to: localhost
+  become: false
+  template:
+    src: "../templates/logfile_yum.j2"
+    dest: "home/ansible/ansibleLogs/{{ ansible_hostname }}.{{ ansible_date_time.year }}{{ ansible_date_time.month }}{{ ansible_date_time.day }}"
+    mode: 0640
+  listen:
+  - "update_logs"

@@ -3,7 +3,10 @@
   apt:
     update_cache: yes
     cache_valid_time: 3600
-    upgrade: dist
+    upgrade: yes
+  register: output
+  notify:
+    - "update_logs"
 
 - name: Check if reboot required
   stat:

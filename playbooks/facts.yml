@@ -1,0 +1,13 @@
+- name: Get some needed facts and prepare for playbook
+  hosts: all
+  become: false
+  tasks: 
+  - name: create log directory
+    delegate_to: localhost
+    run_once: true
+    file:
+      path: "home/ansible/ansibleLogs"
+      state: directory
+      mode: 0750
+    when:
+    - update_logs

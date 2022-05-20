@@ -1,9 +1,9 @@
 ---
+- import_playbook: facts.yml
+
 - name: Update Linux OS
   hosts: linux
   become: true
   roles:
     - role: '../roles/update-os'
-      #  handlers:
-      # - include: handlers/logging.yml
-      # - include: handlers/reboot.yml
+

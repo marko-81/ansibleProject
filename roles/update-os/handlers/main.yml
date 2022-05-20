@@ -14,7 +14,7 @@
   become: false
   template:
     src: "../templates/logfile.j2"
-    dest: "home/ansible/ansibleLogs/{{ ansible_hostname }}.{{ ansible_date_time.year }}{{ ansible_date_time.month }}{{ ansible_date_time.day }}"
+    dest: "./ansibleLogs/{{ ansible_hostname }}.{{ ansible_date_time.year }}{{ ansible_date_time.month }}{{ ansible_date_time.day }}"
     mode: 0640
   listen:
   - "update_logs"
@@ -24,7 +24,7 @@
   become: false
   template:
     src: "../templates/logfile_yum.j2"
-    dest: "home/ansible/ansibleLogs/{{ ansible_hostname }}.{{ ansible_date_time.year }}{{ ansible_date_time.month }}{{ ansible_date_time.day }}"
+    dest: "./ansibleLogs/{{ ansible_hostname }}.{{ ansible_date_time.year }}{{ ansible_date_time.month }}{{ ansible_date_time.day }}"
     mode: 0640
   listen:
   - "update_logs"

@@ -6,7 +6,7 @@
     delegate_to: localhost
     run_once: true
     file:
-      path: "home/ansible/ansibleLogs"
+      path: "./ansibleLogs"
       state: directory
       mode: 0750
     when:

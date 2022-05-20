@@ -1,0 +1,30 @@
+---
+
+- name: Install yum-utils needed to check if reboot is required
+  yum:
+    name: yum-utils
+    state: latest
+
+- name: Update packages CentOS/RHEL
+  yum:
+    name: '*'
+    state: latest
+  register: output
+  notify:
+  - "yum_update_logs"
+
+- name: Check if reboot is required CentOS/RHEL
+  command: needs-restarting -r
+  register: needs_restarting
+  changed_when: needs_restarting.rc == 1
+  failed_when: needs_restarting.rc != 0 and needs_restarting.rc != 1
+  notify:
+  - reboot
+
+- name: Check if services restart is required Centos/RHEL
+  command: needs-restarting -s
+  register: needs_restarting_services
+  changed_when: needs_restarting_services.rc == 1
+  failed_when: needs_restarting_services.rc != 0 and needs_restarting_services.rc != 1
+  notify:
+  - reboot

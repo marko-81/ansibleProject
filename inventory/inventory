@@ -3,3 +3,4 @@ jenkins ansible_host=192.168.142.130
 
 [linux]
 bamboo ansible_host=192.168.142.128
+centos ansible_host=192.168.142.129

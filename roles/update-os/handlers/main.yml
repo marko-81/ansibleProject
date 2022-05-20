@@ -27,4 +27,4 @@
     dest: "/home/ansible/logs/ansibleLogs/{{ ansible_hostname }}.{{ ansible_date_time.year }}{{ ansible_date_time.month }}{{ ansible_date_time.day }}"
     mode: 0640
   listen:
-  - "update_logs"
+  - "yum_update_logs"

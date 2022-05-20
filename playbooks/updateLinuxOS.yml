@@ -2,7 +2,7 @@
 - import_playbook: facts.yml
 
 - name: Update Linux OS
-  hosts: linux
+  hosts: linux #change to appropriate group from inventory file
   become: true
   roles:
     - role: '../roles/update-os'
